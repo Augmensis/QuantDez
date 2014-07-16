@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "StatsEngine.h"
 #ifndef __VANILLA_OPTION_CPP__
 #define __VANILLA_OPTION_CPP__
 
@@ -33,5 +34,43 @@ VanillaOption::VanillaOption(const double& _K, const double& _r, const double& _
 	S = _S;
 	sigma = _sigma;
 }
+
+// Copy constructor
+VanillaOption::VanillaOption(const VanillaOption& rhs){
+	copy(rhs);
+}
+
+// Assignment Operator
+VanillaOption& VanillaOption::operator=(const VanillaOption& rhs) {
+	if (this == &rhs) return *this;
+	copy(rhs);
+	return *this;
+}
+
+// Destructor
+VanillaOption::~VanillaOption() {}
+
+double VanillaOption::getK() const { return K; }
+double VanillaOption::getr() const { return r; }
+double VanillaOption::getT() const { return T; }
+double VanillaOption::getS() const { return S; }
+double VanillaOption::getsigma() const { return sigma; }
+
+double VanillaOption::calcCallPrice() const {
+	double sigmaSqrtT = sigma * sqrt(T);
+	double delta1 = (log(S / K) + (r + sigma * sigma * 0.5) * T) / sigmaSqrtT;
+	double delta2 = delta1 - sigmaSqrtT;
+
+	return S *  N_CDF(delta1) - K * exp(-r * T) * N_CDF(delta2);
+}
+
+double VanillaOption::calcPutPrice() const {
+	double sigmaSqrtT = sigma * sqrt(T);
+	double delta1 = (log(S / K) + (r + sigma * sigma * 0.5) * T) / sigmaSqrtT;
+	double delta2 = delta1 - sigmaSqrtT;
+
+	return K * exp(-r * T) * N_CDF(-delta2) - S * N_CDF(-delta1);
+}
+
 
 #endif __VANILLA_OPTION_CPP__

@@ -35,8 +35,8 @@ public:
 
 
 	// Option Price calculation methods
-	double calc_call_price() const;
-	double calc_put_price() const;
+	double calcCallPrice() const;
+	double calcPutPrice() const;
 
 };
 
