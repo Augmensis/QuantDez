@@ -1,6 +1,8 @@
 #pragma once
+#include "stdafx.h"
 #ifndef __VANILLA_OPTION_H__
 #define __VANILLA_OPTION_H__
+
 
 class VanillaOption {
 

@@ -1,11 +1,7 @@
 #pragma once
 #include "stdafx.h"
-#include "StatsEngine.h"
 #ifndef __VANILLA_OPTION_CPP__
 #define __VANILLA_OPTION_CPP__
-
-#include "VanillaOption.h"
-#include <cmath>
 
 // Initialises instance
 void VanillaOption::init() {
@@ -50,6 +46,8 @@ VanillaOption& VanillaOption::operator=(const VanillaOption& rhs) {
 // Destructor
 VanillaOption::~VanillaOption() {}
 
+StatsEngine s;
+
 double VanillaOption::getK() const { return K; }
 double VanillaOption::getr() const { return r; }
 double VanillaOption::getT() const { return T; }
@@ -61,7 +59,7 @@ double VanillaOption::calcCallPrice() const {
 	double delta1 = (log(S / K) + (r + sigma * sigma * 0.5) * T) / sigmaSqrtT;
 	double delta2 = delta1 - sigmaSqrtT;
 
-	return S *  N_CDF(delta1) - K * exp(-r * T) * N_CDF(delta2);
+	return S * s.N_CDF(delta1) - K * exp(-r * T) * s.N_CDF(delta2);
 }
 
 double VanillaOption::calcPutPrice() const {
@@ -69,7 +67,7 @@ double VanillaOption::calcPutPrice() const {
 	double delta1 = (log(S / K) + (r + sigma * sigma * 0.5) * T) / sigmaSqrtT;
 	double delta2 = delta1 - sigmaSqrtT;
 
-	return K * exp(-r * T) * N_CDF(-delta2) - S * N_CDF(-delta1);
+	return K * exp(-r * T) * s.N_CDF(-delta2) - S * s.N_CDF(-delta1);
 }
 
 

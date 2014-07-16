@@ -5,11 +5,17 @@
 
 #pragma once
 
-#include "targetver.h"
 
+#include "StatsEngine.h"
+#include "VanillaOption.h"
+#include "targetver.h"
+#include <iostream>
 #include <stdio.h>
 #include <tchar.h>
-#include "VanillaOption.h"
+#include <math.h>
+#include <cmath>
+
+
 
 
 
