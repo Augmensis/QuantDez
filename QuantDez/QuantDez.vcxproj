@@ -79,6 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="QSMatrix.h" />
     <ClInclude Include="SimpleMatrix.h" />
     <ClInclude Include="PayOff.h" />
     <ClInclude Include="PayOffCall.h" />
@@ -92,6 +93,7 @@
   <ItemGroup>
     <ClCompile Include="PayOffCall.cpp" />
     <ClCompile Include="PayOffDoubleDigital.cpp" />
+    <ClCompile Include="QSMatrix.cpp" />
     <ClCompile Include="QuantDez.cpp" />
     <ClCompile Include="SimpleMatrix.cpp" />
     <ClCompile Include="StatsEngine.cpp" />

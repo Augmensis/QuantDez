@@ -19,6 +19,7 @@
 #include "PayOffCall.h"
 #include "PayOffDoubleDigital.h"
 #include "SimpleMatrix.h"
+#include "QSMatrix.h"
 
 
 
