@@ -93,6 +93,7 @@
     <ClCompile Include="PayOffCall.cpp" />
     <ClCompile Include="PayOffDoubleDigital.cpp" />
     <ClCompile Include="QuantDez.cpp" />
+    <ClCompile Include="SimpleMatrix.cpp" />
     <ClCompile Include="StatsEngine.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

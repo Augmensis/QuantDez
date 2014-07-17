@@ -13,12 +13,13 @@
 #include <tchar.h>
 #include <math.h>
 #include <cmath>
+#include <vector>
+#include <algorithm>
 #include "PayOff.h"
 #include "PayOffCall.h"
 #include "PayOffDoubleDigital.h"
 #include "SimpleMatrix.h"
-//#include <vector>
-#include <algorithm>
+
 
 
 

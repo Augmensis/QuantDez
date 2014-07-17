@@ -3,7 +3,7 @@
 #ifndef __SIMPLE_MATRIX_H__
 #define __SIMPLE_MATRIX_H__
 
-#include <vector>
+//#include <vector>
 using std::vector;
 
 template <typename Type = double> class SimpleMatrix {
@@ -28,6 +28,7 @@ public:
 
 	// Direct access to matrix values
 	vector<vector<Type>> get_mat() const;
+	SimpleMatrix<Type> get_mat() const;
 	Type& value(const int& row, const int& col);
 
 };
