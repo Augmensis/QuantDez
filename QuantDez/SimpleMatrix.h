@@ -3,11 +3,14 @@
 #ifndef __SIMPLE_MATRIX_H__
 #define __SIMPLE_MATRIX_H__
 
+#include <vector>
+using std::vector;
+
 template <typename Type = double> class SimpleMatrix {
 
 private:
-
-	std::vector<std::vector<Type> > mat;	// Use a Vector of Vectors to store the values
+	
+	vector<vector<Type>> mat;	// Use a Vector of Vectors to store the values
 
 public:
 
@@ -24,7 +27,7 @@ public:
 	virtual ~SimpleMatrix();
 
 	// Direct access to matrix values
-	std::vector<std::vector<Type> > get_mat() const;
+	vector<vector<Type>> get_mat() const;
 	Type& value(const int& row, const int& col);
 
 };

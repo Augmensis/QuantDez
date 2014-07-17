@@ -9,8 +9,8 @@ private:
 	double K;	// Strike Price
 
 public:
-	PayOffCall(const double _K){};
-	virtual ~PayOffCall(){};
+	PayOffCall(const double _K);
+	virtual ~PayOffCall();
 
 	// Virtual function override
 	virtual double operator() (const double S) const;	// Max PayOff is max(S-K,0)
