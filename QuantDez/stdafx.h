@@ -5,7 +5,6 @@
 
 #pragma once
 
-
 #include "StatsEngine.h"
 #include "VanillaOption.h"
 #include "targetver.h"
@@ -14,6 +13,12 @@
 #include <tchar.h>
 #include <math.h>
 #include <cmath>
+#include "PayOff.h"
+#include "PayOffCall.h"
+#include "PayOffDoubleDigital.h"
+#include "SimpleMatrix.h"
+#include <vector>
+#include <algorithm>
 
 
 
