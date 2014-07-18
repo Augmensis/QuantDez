@@ -211,7 +211,7 @@ template<typename T> const T& QSMatrix<T>::operator()(const unsigned& row, const
 template<typename T> unsigned QSMatrix<T>::get_rows() const{
 	return this->rows;
 };
-template<typename T> QSMatrix<T>::unsigned get_cols() const{
+template<typename T> unsigned QSMatrix<T>::get_cols() const{
 	return this->cols;
 };
 
