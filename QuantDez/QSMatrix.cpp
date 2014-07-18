@@ -19,8 +19,8 @@ template<typename T> QSMatrix<T>::QSMatrix(unsigned _rows, unsigned _cols, const
 // Copy constructor
 template<typename T> QSMatrix<T>::QSMatrix(const QSMatrix<T>& rhs){
 	mat = rhs.mat;
-	rows = rhs.get_rows;
-	cols = rhs.get_cols;
+	rows = rhs.get_rows();
+	cols = rhs.get_cols();
 };
 
 // Virtual destructor

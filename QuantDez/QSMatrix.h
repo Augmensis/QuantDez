@@ -49,6 +49,6 @@ public:
 
 };
 
-#include "simplematrix.cpp"
+#include "QSMatrix.cpp"
 
 #endif __QS_MATRIX_H__
