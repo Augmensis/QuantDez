@@ -78,6 +78,8 @@ template<typename T> QSMatrix<T>::QSMatrix<T>& operator+=(const QSMatrix<T>& rhs
 	}
 	return *this;
 };
+
+// Subtraction of two matrices
 template<typename T> QSMatrix<T>::QSMatrix<T> operator-(const QSMatrix<T>& rhs){
 	QSMatrix result(rows, cols, 0.0);
 
@@ -88,6 +90,8 @@ template<typename T> QSMatrix<T>::QSMatrix<T> operator-(const QSMatrix<T>& rhs){
 	}
 	return *this;
 };
+
+// Cumulative subtraction of two matrices
 template<typename T> QSMatrix<T>::QSMatrix<T>& operator-=(const QSMatrix<T>& rhs){
 	unsigned rows = rhs.get_rows();
 	unsigned cols = rhs.get_cols();
@@ -99,15 +103,68 @@ template<typename T> QSMatrix<T>::QSMatrix<T>& operator-=(const QSMatrix<T>& rhs
 	}
 	return *this;
 };
-template<typename T> QSMatrix<T>::QSMatrix<T> operator*(const QSMatrix<T>& rhs);
-template<typename T> QSMatrix<T>::QSMatrix<T>& operator*=(const QSMatrix<T>& rhs);
+
+// Left multiplication of this matrix and another
+template<typename T> QSMatrix<T>::QSMatrix<T> operator*(const QSMatrix<T>& rhs){
+	unsigned rows = rhs.get_rows();
+	unsigned cols = rhs.get_cols();
+	QSMatrix result(rows, cols, 0.0);
+
+	for (unsigned i = 0; i < rows; i++){
+		for (unsigned j = 0; j < cols; j++){
+			for (unsigned k = 0; k < rows; k++){
+				result(i, j) += this->mat[i][k] * rhs(k, j);
+			}
+		}
+	}
+	return result;
+};
+
+// CUmulative left multiplication of this matrix and another
+template<typename T> QSMatrix<T>::QSMatrix<T>& operator*=(const QSMatrix<T>& rhs){
+	QSMatrix result = (*this) * rhs;
+	(*this) = result;
+	return *this;
+};
 template<typename T> QSMatrix<T>::QSMatrix<T> transpose();
 
-	// Scalar operations
-template<typename T> QSMatrix<T>::QSMatrix<T> operator+(const T& rhs);
-template<typename T> QSMatrix<T>::QSMatrix<T> operator-(const T& rhs);
-template<typename T> QSMatrix<T>::QSMatrix<T> operator*(const T& rhs);
-template<typename T> QSMatrix<T>::QSMatrix<T> operator/(const T& rhs);
+// Scalar operations
+template<typename T> QSMatrix<T>::QSMatrix<T> operator+(const T& rhs){
+	QSMatrix result(rows, cols, 0.0);
+	for (unsigned i = 0; i < rows; i++){
+		for (unsigned j = 0; j < cols; j++){
+			result(i, j) = this->mat[i][j] + rhs;
+		}
+	}
+	return result;
+};
+template<typename T> QSMatrix<T>::QSMatrix<T> operator-(const T& rhs){
+	QSMatrix result(rows, cols, 0.0);
+	for (unsigned i = 0; i < rows; i++){
+		for (unsigned j = 0; j < cols; j++){
+			result(i, j) = this->mat[i][j] - rhs;
+		}
+	}
+	return result;
+};
+template<typename T> QSMatrix<T>::QSMatrix<T> operator*(const T& rhs){
+	QSMatrix result(rows, cols, 0.0);
+	for (unsigned i = 0; i < rows; i++){
+		for (unsigned j = 0; j < cols; j++){
+			result(i, j) = this->mat[i][j] * rhs;
+		}
+	}
+	return result;
+};
+template<typename T> QSMatrix<T>::QSMatrix<T> operator/(const T& rhs){
+	QSMatrix result(rows, cols, 0.0);
+	for (unsigned i = 0; i < rows; i++){
+		for (unsigned j = 0; j < cols; j++){
+			result(i, j) = this->mat[i][j] / rhs;
+		}
+	}
+	return result;
+};
 
 	// Matrix/vector operations
 template<typename T> QSMatrix<T>::vector<T> operator*(const vector<T>& rhs);
